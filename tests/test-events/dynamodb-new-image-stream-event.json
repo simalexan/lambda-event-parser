@@ -1,0 +1,9 @@
+{
+  "Records": [
+    {
+      "dynamodb": {
+        "NewImage": "{\"isParsed\": true}"
+      }
+    }
+  ]
+}

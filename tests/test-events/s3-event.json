@@ -1,0 +1,9 @@
+{
+  "Records": [
+    {
+      "s3": {
+        "object": "{\"isParsed\": true}"
+      }
+    }
+  ]
+}

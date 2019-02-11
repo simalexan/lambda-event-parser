@@ -1,0 +1,4 @@
+{
+  "httpMethod": "DELETE",
+  "body": "{\"isParsed\": true}"
+}
