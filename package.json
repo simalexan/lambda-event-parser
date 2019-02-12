@@ -1,7 +1,7 @@
 {
   "name": "lambda-event-parse",
   "version": "1.0.0",
-  "description": "",
+  "description": "A parse tool that helps you easily consume any AWS resource event triggering your AWS Lambda.",
   "main": "src/index.js",
   "scripts": {
     "test": "jest --color"
