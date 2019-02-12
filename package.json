@@ -1,6 +1,6 @@
 {
   "name": "lambda-event-parse",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A parse tool that helps you easily consume any AWS resource event triggering your AWS Lambda.",
   "main": "src/index.js",
   "scripts": {
