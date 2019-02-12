@@ -5,7 +5,7 @@ const parseApiGwHttpEvent = require('./parse-apigw-http-event'),
   parseSnsEvent = require('./parse-sns-event');
 
 module.exports = function parseIncomingAWSEvent(event){
-  if (!event || (!event.Records && !event.body)) return [];
+  if (!event || (!event.Records && !event.httpMethod && !event.body)) return [];
 
   if (!event.Records) return parseApiGwHttpEvent(event);
 

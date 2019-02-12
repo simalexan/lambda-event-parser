@@ -5,6 +5,6 @@
     "name": "test"
   },
   "queryStringParameters": {
-    "name": "test"
+    "search": "blabla"
   }
 }
