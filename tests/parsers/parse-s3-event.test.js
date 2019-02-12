@@ -1,6 +1,6 @@
 /*global describe, expect*/
-const parser = require('../src/parse-s3-event'),
-  s3Event = require('./test-events/s3-event.json');
+const parser = require('../../src/parse-s3-event'),
+  s3Event = require('../test-events/s3-event.json');
 
 describe('parse S3 event', () => {
   'use strict';

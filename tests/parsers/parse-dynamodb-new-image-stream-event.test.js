@@ -1,6 +1,6 @@
 /*global describe, expect*/
-const parser = require('../src/parse-dynamodb-new-image-event'),
-  dynamoDBNewImageEvent = require('./test-events/dynamodb-new-image-stream-event.json');
+const parser = require('../../src/parse-dynamodb-new-image-event'),
+  dynamoDBNewImageEvent = require('../test-events/dynamodb-new-image-stream-event.json');
 
 describe('parse DynamoDB event', () => {
   'use strict';

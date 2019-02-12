@@ -1,7 +1,6 @@
 /*global describe, expect*/
-const parser = require('../src/index'),
-  apiPostEvent = require('./test-events/apigw-http-post-event.json'),
-  structuredEvent = require('./test-events/parsed-event.json');
+const parser = require('../../src/index'),
+  apiPostEvent = require('../test-events/apigw-http-post-event.json');
 
 describe('parse API GW HTTP GET event', () => {
   'use strict';

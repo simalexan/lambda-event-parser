@@ -1,7 +1,6 @@
 /*global describe, expect*/
-const parser = require('../src/index'),
-  apiDeleteEvent = require('./test-events/apigw-http-delete-event.json'),
-  structuredEvent = require('./test-events/parsed-event.json');
+const parser = require('../../src/index'),
+  apiDeleteEvent = require('../test-events/apigw-http-delete-event.json');
 
 describe('parse API GW HTTP GET event', () => {
   'use strict';

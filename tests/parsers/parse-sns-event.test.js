@@ -1,6 +1,6 @@
 /*global describe, expect*/
-const parser = require('../src/parse-sns-event'),
-  snsEvent = require('./test-events/sns-event.json');
+const parser = require('../../src/parse-sns-event'),
+  snsEvent = require('../test-events/sns-event.json');
 
 describe('parse SNS event', () => {
   'use strict';
