@@ -8,7 +8,9 @@ describe('parse API GW HTTP PUT event', () => {
 
   test('should properly parse a well structured HTTP PUT event', () => {
     const parsedEvent = parser(apiPutEvent);
-    expect(parsedEvent).toEqual(structuredEvent);
+    expect(parsedEvent.sourceType).toEqual('api');
+    expect(parsedEvent.sourceEvent).toEqual(apiPutEvent);
+    expect(parsedEvent.records).toBeInstanceOf(Array);
   });
   
 });

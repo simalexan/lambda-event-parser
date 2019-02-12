@@ -1,4 +1,7 @@
 {
   "httpMethod": "DELETE",
-  "body": "{\"isParsed\": true}"
+  "pathParameters": {
+    "id": 1,
+    "name": "test"
+  }
 }

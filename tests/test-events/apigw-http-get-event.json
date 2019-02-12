@@ -1,4 +1,10 @@
 {
   "httpMethod": "GET",
-  "body": "{\"isParsed\": true}"
+  "pathParameters": {
+    "id": 1,
+    "name": "test"
+  },
+  "queryStringParameters": {
+    "name": "test"
+  }
 }

@@ -1,4 +1,8 @@
 {
   "httpMethod": "PUT",
-  "body": "{\"isParsed\": true}"
+  "body": "{\"isParsed\": true}",
+  "pathParameters": {
+    "id": 1,
+    "name": "test"
+  }
 }

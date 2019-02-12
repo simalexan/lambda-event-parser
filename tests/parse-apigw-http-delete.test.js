@@ -8,7 +8,9 @@ describe('parse API GW HTTP GET event', () => {
 
   test('should properly parse a well structured HTTP DELETE event', () => {
     const parsedEvent = parser(apiDeleteEvent);
-    expect(parsedEvent).toEqual(structuredEvent);
+    expect(parsedEvent.sourceType).toEqual('api');
+    expect(parsedEvent.sourceEvent).toEqual(apiDeleteEvent);
+    expect(parsedEvent.records).toBeInstanceOf(Array);
   });
   
 });
