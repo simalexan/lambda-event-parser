@@ -9,7 +9,7 @@ A simple parse tool to just parses the events triggering your AWS Lambda into a 
 ```javascript
 {
   sourceType: 'api',
-  sourceEvent: originalniEvent,
+  sourceEvent: originalEvent,
   records: [{
     userId: 123
   }] // array of events (with parameters as properties)
