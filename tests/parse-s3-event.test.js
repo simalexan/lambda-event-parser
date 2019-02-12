@@ -1,6 +1,7 @@
 /*global describe, expect*/
 const parser = require('../src/index'),
-  s3Event = require('./test-events/s3-event.json');
+  s3Event = require('./test-events/s3-event.json'),
+  structuredEvent = require('./test-events/parsed-event.json');
 
 
 describe('parse S3 event', () => {
@@ -8,7 +9,7 @@ describe('parse S3 event', () => {
 
   test('should properly parse a well structured S3 event', () => {
     const parsedEvent = parser(s3Event);
-    expect(parsedEvent).toEqual([]);
+    expect(parsedEvent).toEqual(structuredEvent);
   });
-  
+
 });
