@@ -2,7 +2,10 @@
   "Records": [
     {
       "s3": {
-        "object": "{\"isParsed\": true}"
+        "object": {
+          "key": "HappyFace.jpg",
+          "size": 1024
+        }
       }
     }
   ]
