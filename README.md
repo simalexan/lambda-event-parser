@@ -4,6 +4,28 @@
 
 A simple parse tool to just parses the events triggering your AWS Lambda into a common format, so you don't have to worry.
 
+## Setup Instructions
+
+- Install package to your project.
+
+```shell
+npm install lambda-event-parse
+```
+
+or
+
+```shell
+yarn add lambda-event-parse
+```
+
+- Import the package
+
+```javascript
+const parser = require('lambda-event-parse');
+
+parser();
+```
+
 ## The standardized event format
 
 ```javascript
@@ -140,7 +162,8 @@ will be translated into:
 - [x] S3
 - [x] API Gateway (GET, POST, PUT, DELETE, PATCH)
 - [x] DynamoDB Streams (NEW_IMAGE)
-- [ ] SQS
+- [x] SQS
+- [x] Invoke
 - [ ] Other AWS Lambda
 - [ ] CloudWatch
 - [ ] Kinesis Data Firehose
