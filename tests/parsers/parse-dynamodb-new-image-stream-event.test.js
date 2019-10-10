@@ -1,4 +1,5 @@
 /*global describe, expect*/
+/* eslint-env es6 */
 const parser = require('../../src/parse-dynamodb-new-image-event');
 const dynamoDBNewImageEvent = require('../test-events/dynamodb-new-image-stream-event.json');
 const { DynamoDb } = require('../../src/constants/event');

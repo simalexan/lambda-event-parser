@@ -1,4 +1,5 @@
 /*global describe, expect*/
+/* eslint-env es6 */
 const parser = require('../../src/index');
 const apiPutEvent = require('../test-events/apigw-http-put-event.json');
 const { ApiGateway } = require('../../src/constants/event');

@@ -1,4 +1,5 @@
 /*global describe, expect*/
+/* eslint-env es6 */
 const parser = require('../../src/index');
 const invokeEvent = require('../test-events/invoke-event.json');
 const { Invoke } = require('../../src/constants/event');

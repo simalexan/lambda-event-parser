@@ -1,4 +1,5 @@
 /*global describe, expect*/
+/* eslint-env es6 */
 const parser = require('../../src/parse-sns-event');
 const snsEvent = require('../test-events/sns-event.json');
 const { Sns } = require('../../src/constants/event');

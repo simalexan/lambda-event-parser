@@ -1,4 +1,5 @@
 /*global describe, expect*/
+/* eslint-env es6 */
 const parser = require('../../src/parse-s3-event');
 const s3Event = require('../test-events/s3-event.json');
 const { S3 } = require('../../src/constants/event');
