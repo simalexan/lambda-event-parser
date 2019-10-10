@@ -21,9 +21,9 @@ yarn add lambda-event-parse
 Import the package
 
 ```javascript
-const parseIncomingAWSEvent = require('lambda-event-parse');
+const parser = require('lambda-event-parse');
 
-parseIncomingAWSEvent(event);
+parser(event);
 ```
 
 ## The standardized event format
