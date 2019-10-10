@@ -1,11 +1,14 @@
 'use strict';
-const qs = require('querystring'),
-  queryPattern = /^\?([^=]+=[^=]+&)+[^=]+(=[^=]+)?$/g;
+const qs = require('querystring');
+const queryPattern = /^\?([^=]+=[^=]+&)+[^=]+(=[^=]+)?$/g;
+const { ApiGateway } = require('./constants/event');
 
-module.exports = function parseApiGwHttpEvent(event){
+module.exports = function parseApiGwHttpEvent(event) {
   let parameters = event.pathParameters || {};
   if (event && event.body) {
-    const body = event.body.match(queryPattern) ? qs.parse(event.body) : JSON.parse(event.body);
+    const body = event.body.match(queryPattern)
+      ? qs.parse(event.body)
+      : JSON.parse(event.body);
     parameters = Object.assign(parameters, body);
   }
 
@@ -14,7 +17,7 @@ module.exports = function parseApiGwHttpEvent(event){
   }
 
   return {
-    sourceType: 'api',
+    sourceType: ApiGateway,
     records: [parameters],
     sourceEvent: event
   };

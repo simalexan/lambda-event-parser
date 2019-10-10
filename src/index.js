@@ -9,7 +9,7 @@ module.exports = function parseIncomingAWSEvent(event) {
   if (!event || (!event.Records && !event.httpMethod && !event.body)) return [];
 
   if (!event.Records && event.statusCode) return parseInvokeEvent(event);
-  if (!event.Records && event.pathParameters) return parseApiGwHttpEvent(event);
+  if (!event.Records && event.httpMethod) return parseApiGwHttpEvent(event);
 
   const eventRecord = event.Records[0];
   if (eventRecord.Sns) return parseSnsEvent(event);

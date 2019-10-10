@@ -56,14 +56,13 @@ Let's take another example, an S3 Event:
     {
       s3: {
         object: {
-          key: "HappyFace.jpg",
+          key: 'HappyFace.jpg',
           size: 1024
         }
       }
     }
-  ]
+  ];
 }
-
 ```
 
 will be translated into:
@@ -144,7 +143,7 @@ will be translated into:
 - [ ] SQS
 - [ ] Other AWS Lambda
 - [ ] CloudWatch
-- [ ] Kinesis DataFirehose
+- [ ] Kinesis Data Firehose
 - [ ] Kinesis Data Streams
 - [ ] SES
 

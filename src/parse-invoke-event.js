@@ -1,6 +1,7 @@
 'use strict';
-const qs = require('querystring'),
-  queryPattern = /^\?([^=]+=[^=]+&)+[^=]+(=[^=]+)?$/g;
+const qs = require('querystring');
+const queryPattern = /^\?([^=]+=[^=]+&)+[^=]+(=[^=]+)?$/g;
+const { Invoke } = require('./constants/event');
 
 module.exports = function parseInvokeEvent(event) {
   let parameters = {};
@@ -16,7 +17,7 @@ module.exports = function parseInvokeEvent(event) {
   }
 
   return {
-    sourceType: 'invoke',
+    sourceType: Invoke,
     records: [parameters],
     sourceEvent: event
   };
