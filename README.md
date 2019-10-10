@@ -6,7 +6,7 @@ A simple parse tool to just parses the events triggering your AWS Lambda into a 
 
 ## Setup Instructions
 
-- Install package to your project.
+Install package to your project
 
 ```shell
 npm install lambda-event-parse
@@ -18,12 +18,12 @@ or
 yarn add lambda-event-parse
 ```
 
-- Import the package
+Import the package
 
 ```javascript
-const parser = require('lambda-event-parse');
+const parseIncomingAWSEvent = require('lambda-event-parse');
 
-parser();
+parseIncomingAWSEvent(event);
 ```
 
 ## The standardized event format
