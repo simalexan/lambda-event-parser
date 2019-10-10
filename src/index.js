@@ -6,9 +6,11 @@ const parseSnsEvent = require('./parse-sns-event');
 const parseInvokeEvent = require('./parse-invoke-event');
 
 module.exports = function parseIncomingAWSEvent(event) {
-  if (!event || (!event.Records && !event.httpMethod && !event.body)) return [];
+  if (!event) return [];
 
-  if (!event.Records && event.statusCode) return parseInvokeEvent(event);
+  if (!event.Records && !event.httpMethod && !event.body)
+    return parseInvokeEvent(event);
+
   if (!event.Records && event.httpMethod) return parseApiGwHttpEvent(event);
 
   const eventRecord = event.Records[0];
