@@ -3,7 +3,8 @@
     {
       "Sns": {
         "Message": "{\"isParsed\": true}"
-      }
+      },
+      "eventSource": "aws:sns"
     }
   ]
 }

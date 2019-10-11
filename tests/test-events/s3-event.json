@@ -6,7 +6,8 @@
           "key": "HappyFace.jpg",
           "size": 1024
         }
-      }
+      },
+      "eventSource": "aws:s3"
     },
     {
       "s3": {
@@ -14,7 +15,8 @@
           "key": "HappyFace.jpg",
           "size": 1024
         }
-      }
+      },
+      "eventSource": "aws:s3"
     },
     {
       "s3": {
@@ -22,7 +24,8 @@
           "key": "HappyFace.jpg",
           "size": 1024
         }
-      }
+      },
+      "eventSource": "aws:s3"
     }
   ]
 }
