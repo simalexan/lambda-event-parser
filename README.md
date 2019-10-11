@@ -8,13 +8,13 @@ A simple parse tool to just parses the events triggering your AWS Lambda into a 
 
 Install package to your project
 
-```shell
+```bash
 npm install lambda-event-parse
 ```
 
 or
 
-```shell
+```bash
 yarn add lambda-event-parse
 ```
 
@@ -28,13 +28,15 @@ parser(event);
 
 ## The standardized event format
 
-```javascript
+```json
 {
-  sourceType: 'api',
-  sourceEvent: originalEvent,
-  records: [{
-    userId: 123
-  }] // array of events (with parameters as properties)
+  "sourceType": "api",
+  "sourceEvent": originalEvent,
+  "records": [
+    {
+      "userId": 123
+    }
+  ] // array of events (with parameters as properties)
 }
 ```
 
@@ -44,27 +46,28 @@ parser(event);
 
 `?userId=456&name=someoneUnknown`
 
-```javascript
+```json
 {
-  httpMethod: 'GET',
-  queryStringParameters: {
-    userId: 456,
-    name: 'someoneUnknown'
+  "httpMethod": "GET",
+  "queryStringParameters": {
+    "userId": 456,
+    "name": "someoneUnknown"
   }
-}
 }
 ```
 
 will be translated into ->
 
-```javascript
+```json
 {
-  sourceType: 'api',
-  sourceEvent: originalEvent, // the complete, unchanged GET request event objet
-  records: [{
-    userId: 123,
-    name: 'someoneUnknown'
-  }] // array of events (with parameters as properties)
+  "sourceType": "api",
+  "sourceEvent": originalEvent, // the complete, unchanged GET request event objet
+  "records": [
+    {
+      "userId": 123,
+      "name": "someoneUnknown"
+    }
+  ] // array of events (with parameters as properties)
 }
 ```
 
@@ -72,14 +75,14 @@ Let's take another example, an S3 Event:
 
 **S3 Event**:
 
-```javascript
+```json
 {
-  Records: [
+  "Records": [
     {
-      s3: {
-        object: {
-          key: 'HappyFace.jpg',
-          size: 1024
+      "s3": {
+        "object": {
+          "key": "HappyFace.jpg",
+          "size": 1024
         }
       }
     }
@@ -89,20 +92,22 @@ Let's take another example, an S3 Event:
 
 will be translated into:
 
-```javascript
+```json
 {
-  sourceType: 's3',
-  sourceEvent: originalEvent, // the complete, unchanged S3 event objet
-  records: [{
-    key: "HappyFace.jpg",
-    size: 1024
-  }] // array of events (with parameters as properties)
+  "sourceType": "s3",
+  "sourceEvent": originalEvent, // the complete, unchanged S3 event objet
+  "records": [
+    {
+      "key": "HappyFace.jpg",
+      "size": 1024
+    }
+  ] // array of events (with parameters as properties)
 }
 ```
 
-**SNS Event**:
+**DynamoDb Event**:
 
-```javascript
+```json
 {
   "Records": [
     {
@@ -112,47 +117,112 @@ will be translated into:
       "eventSource": "aws:dynamodb",
       "awsRegion": "us-west-2",
       "dynamodb": {
-          "ApproximateCreationDateTime": 1479499740,
-          "Keys": {
-              "Timestamp": {
-                  "S": "2016-11-18:12:09:36"
-              },
-              "Username": {
-                  "S": "John Doe"
-              }
+        "ApproximateCreationDateTime": 1479499740,
+        "Keys": {
+          "Timestamp": {
+            "S": "2016-11-18:12:09:36"
           },
-          "NewImage": {
-              "Timestamp": {
-                  "S": "2016-11-18:12:09:36"
-              },
-              "Message": {
-                  "S": "This is a bark from the Woofer social network"
-              },
-              "Username": {
-                  "S": "John Doe"
-              }
+          "Username": {
+            "S": "John Doe"
+          }
+        },
+        "NewImage": {
+          "Timestamp": {
+            "S": "2016-11-18:12:09:36"
           },
-          "SequenceNumber": "13021600000000001596893679",
-          "SizeBytes": 112,
-          "StreamViewType": "NEW_IMAGE"
+          "Message": {
+            "S": "This is a bark from the Woofer social network"
+          },
+          "Username": {
+            "S": "John Doe"
+          }
+        },
+        "SequenceNumber": "13021600000000001596893679",
+        "SizeBytes": 112,
+        "StreamViewType": "NEW_IMAGE"
       },
       "eventSourceARN": "arn:aws:dynamodb:us-east-1:123456789012:table/BarkTable/stream/2016-11-16T20:42:48.104"
     }
   ]
 }
-
 ```
 
 will be translated into:
 
-```javascript
+```json
 {
-  sourceType: 's3',
-  sourceEvent: originalEvent, // the complete, unchanged S3 event objet
-  records: [{
-    key: "HappyFace.jpg",
-    size: 1024
-  }] // array of events (with parameters as properties)
+  "sourceType": "dynamodb",
+  "sourceEvent": originalEvent, // the complete, unchanged dynamodb event objet
+  "records": [
+    {
+      "key": "HappyFace.jpg",
+      "size": 1024
+    }
+  ] // array of events (with parameters as properties)
+}
+```
+
+**API Gateway Event**:
+
+```json
+{
+  "httpMethod": "GET",
+  "pathParameters": {
+    "id": 1,
+    "name": "test"
+  },
+  "queryStringParameters": {
+    "search": "Happy Face"
+  }
+}
+```
+
+will be translated into:
+
+```json
+{
+  "sourceType": "api",
+  "sourceEvent": originalEvent,
+  "records": [
+    {
+      "key": "HappyFace.jpg",
+      "size": 1024
+    }
+  ]
+}
+```
+
+**Direct Invoke Event**:
+
+```json
+[1, 2, 3] //array
+```
+
+will be translated into:
+
+```json
+{
+  "sourceType": "invoke",
+  "sourceEvent": originalEvent,
+  "records": [1, 2, 3]
+}
+```
+
+**Direct Invoke Event**:
+
+```json
+{
+  "pokemon": ["pikachu", "sudowoodo"] //object
+}
+```
+
+will be translated into:
+
+```json
+{
+  "sourceType": "invoke",
+  "sourceEvent": originalEvent,
+  "records": [{ "pokemon": ["pikachu", "sudowoodo"] }]
 }
 ```
 
