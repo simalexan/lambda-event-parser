@@ -1,14 +1,14 @@
 'use strict';
+const qs = require('querystring');
+const queryPattern = /^\?([^=]+=[^=]+&)+[^=]+(=[^=]+)?$/g;
 const { Sns } = require('./constants/event');
 
 module.exports = function parseSnsEvent(event) {
-  if (!event || !event.Records || !Array.isArray(event.Records)) {
-    return [];
-  }
-  const extractMessage = record => record.Sns && record.Sns.Message,
-    extractedRecords = event.Records.map(extractMessage).filter(
-      message => message
-    );
+  const extractMessage = record => record.Sns && record.Sns.Message;
+
+  const extractedRecords = event.Records.map(extractMessage).filter(message =>
+    message.match(queryPattern) ? qs.parse(message) : JSON.parse(message)
+  );
   return {
     sourceType: Sns,
     records: extractedRecords,

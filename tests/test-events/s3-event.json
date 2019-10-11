@@ -7,6 +7,22 @@
           "size": 1024
         }
       }
+    },
+    {
+      "s3": {
+        "object": {
+          "key": "HappyFace.jpg",
+          "size": 1024
+        }
+      }
+    },
+    {
+      "s3": {
+        "object": {
+          "key": "HappyFace.jpg",
+          "size": 1024
+        }
+      }
     }
   ]
 }

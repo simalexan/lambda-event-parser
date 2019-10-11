@@ -13,4 +13,15 @@ describe('parse S3 event', () => {
     expect(parsedEvent.sourceEvent).toEqual(s3Event);
     expect(parsedEvent.records).toBeInstanceOf(Array);
   });
+
+  test('should return an array of extracted records', () => {
+    const event = Object.assign({}, s3Event);
+    event.Records[0].s3.object = 'apple';
+    event.Records[1].s3.object = 'pear';
+    event.Records[2].s3.object = 'orange';
+    const parsedEvent = parser(event);
+    expect(parsedEvent.sourceType).toEqual(S3);
+    expect(parsedEvent.sourceEvent).toEqual(event);
+    expect(parsedEvent.records).toEqual(['apple', 'pear', 'orange']);
+  });
 });
