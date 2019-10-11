@@ -8,6 +8,10 @@ const parseInvokeEvent = require('./parse-invoke-event');
 module.exports = function parseIncomingAWSEvent(event) {
   if (!event) return [];
 
+  // if (!event.Records) {
+
+  // }
+
   if (!event.Records && !event.httpMethod && !event.body)
     return parseInvokeEvent(event);
 

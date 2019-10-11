@@ -1,19 +1,10 @@
 'use strict';
-const qs = require('querystring');
-const queryPattern = /^\?([^=]+=[^=]+&)+[^=]+(=[^=]+)?$/g;
 const { Invoke } = require('./constants/event');
 
 module.exports = function parseInvokeEvent(event) {
   let parameters = {};
-  if (event && event.body) {
-    const body = event.body.match(queryPattern)
-      ? qs.parse(event.body)
-      : JSON.parse(event.body);
-    parameters = Object.assign(parameters, body);
-  }
-
-  if (event && event.statusCode) {
-    parameters = Object.assign(parameters, event.statusCode);
+  if (event) {
+    parameters = Object.assign(parameters, event);
   }
 
   return {
