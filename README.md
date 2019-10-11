@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/simalexan/lambda-event-parser.svg?branch=master)](https://travis-ci.org/simalexan/lambda-event-parser)
 
-A simple parse tool to just parses the events triggering your AWS Lambda into a common format, so you don't have to worry.
+A simple parse tool to parse the events triggering your AWS Lambda into a common format, so you don't have to worry.
 
 ## Setup Instructions
 
@@ -28,7 +28,7 @@ parser(event);
 
 ## The standardized event format
 
-```json
+```javascript
 {
   "sourceType": "api",
   "sourceEvent": originalEvent,
@@ -46,7 +46,7 @@ parser(event);
 
 `?userId=456&name=someoneUnknown`
 
-```json
+```javascript
 {
   "httpMethod": "GET",
   "queryStringParameters": {
@@ -58,7 +58,7 @@ parser(event);
 
 will be translated into ->
 
-```json
+```javascript
 {
   "sourceType": "api",
   "sourceEvent": originalEvent, // the complete, unchanged GET request event objet
@@ -75,7 +75,7 @@ Let's take another example, an S3 Event:
 
 **S3 Event**:
 
-```json
+```javascript
 {
   "Records": [
     {
@@ -92,7 +92,7 @@ Let's take another example, an S3 Event:
 
 will be translated into:
 
-```json
+```javascript
 {
   "sourceType": "s3",
   "sourceEvent": originalEvent, // the complete, unchanged S3 event objet
@@ -107,7 +107,7 @@ will be translated into:
 
 **DynamoDb Event**:
 
-```json
+```javascript
 {
   "Records": [
     {
@@ -149,7 +149,7 @@ will be translated into:
 
 will be translated into:
 
-```json
+```javascript
 {
   "sourceType": "dynamodb",
   "sourceEvent": originalEvent, // the complete, unchanged dynamodb event objet
@@ -164,7 +164,7 @@ will be translated into:
 
 **API Gateway Event**:
 
-```json
+```javascript
 {
   "httpMethod": "GET",
   "pathParameters": {
@@ -179,7 +179,7 @@ will be translated into:
 
 will be translated into:
 
-```json
+```javascript
 {
   "sourceType": "api",
   "sourceEvent": originalEvent,
@@ -194,13 +194,13 @@ will be translated into:
 
 **Direct Invoke Event**:
 
-```json
-[1, 2, 3] //array
+```javascript
+[1, 2, 3]; //array
 ```
 
 will be translated into:
 
-```json
+```javascript
 {
   "sourceType": "invoke",
   "sourceEvent": originalEvent,
@@ -210,7 +210,7 @@ will be translated into:
 
 **Direct Invoke Event**:
 
-```json
+```javascript
 {
   "pokemon": ["pikachu", "sudowoodo"] //object
 }
@@ -218,7 +218,7 @@ will be translated into:
 
 will be translated into:
 
-```json
+```javascript
 {
   "sourceType": "invoke",
   "sourceEvent": originalEvent,
