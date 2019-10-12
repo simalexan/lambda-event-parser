@@ -26,10 +26,6 @@ const { parserEvent, Event } = require('lambda-event-parse');
 parserEvent(event);
 ```
 
-Access AWS event constants
-
-=
-
 ## The standardized event format
 
 ```javascript
