@@ -2,11 +2,11 @@
 const { Invoke } = require('./constants/event');
 
 module.exports = function parseInvokeEvent(event) {
-  const records = Array.isArray(event) ? [...event] : { ...event };
+  const records = Array.isArray(event) ? [...event] : [{ ...event }];
 
   return {
     sourceType: Invoke,
-    records: [records],
+    records: records,
     sourceEvent: event
   };
 };
