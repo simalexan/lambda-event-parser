@@ -6,7 +6,7 @@ module.exports = function parseInvokeEvent(event) {
 
   return {
     sourceType: Invoke,
-    records: records,
+    records,
     sourceEvent: event
   };
 };
