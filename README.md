@@ -233,8 +233,7 @@ will be translated into:
 - [x] API Gateway (GET, POST, PUT, DELETE, PATCH)
 - [x] DynamoDB Streams (NEW_IMAGE)
 - [x] SQS
-- [x] Invoke
-- [ ] Other AWS Lambda
+- [x] Other AWS Lambda
 - [ ] CloudWatch
 - [ ] Kinesis Data Firehose
 - [ ] Kinesis Data Streams
