@@ -23,7 +23,7 @@ Import the package
 ```javascript
 const { parserEvent, Event } = require('lambda-event-parse');
 
-parserEvent(event);
+parserEvent(incomingAWSEvent);
 ```
 
 ## The standardized event format
@@ -86,7 +86,7 @@ Let's take another example, an S3 Event:
         }
       }
     }
-  ];
+  ]
 }
 ```
 
