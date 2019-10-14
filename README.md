@@ -30,11 +30,11 @@ parserEvent(event);
 
 ```javascript
 {
-  "sourceType": "api",
-  "sourceEvent": originalEvent,
-  "records": [
+  sourceType: "api",
+  sourceEvent: originalEvent,
+  records: [
     {
-      "userId": 123
+      userId: 123
     }
   ] // array of events (with parameters as properties)
 }
@@ -60,12 +60,12 @@ will be translated into ->
 
 ```javascript
 {
-  "sourceType": "api",
-  "sourceEvent": originalEvent, // the complete, unchanged GET request event objet
-  "records": [
+  sourceType: "api",
+  sourceEvent: originalEvent, // the complete, unchanged GET request event objet
+  records: [
     {
-      "userId": 123,
-      "name": "someoneUnknown"
+      userId: 123,
+      name: "someoneUnknown"
     }
   ] // array of events (with parameters as properties)
 }
@@ -94,9 +94,9 @@ will be translated into:
 
 ```javascript
 {
-  "sourceType": "s3",
-  "sourceEvent": originalEvent, // the complete, unchanged S3 event objet
-  "records": [
+  sourceType: "s3",
+  sourceEvent: originalEvent, // the complete, unchanged S3 event objet
+  records: [
     {
       "key": "HappyFace.jpg",
       "size": 1024
@@ -151,12 +151,12 @@ will be translated into:
 
 ```javascript
 {
-  "sourceType": "dynamodb",
-  "sourceEvent": originalEvent, // the complete, unchanged dynamodb event objet
-  "records": [
+  sourceType: "dynamodb",
+  sourceEvent: originalEvent, // the complete, unchanged dynamodb event objet
+  records: [
     {
-      "key": "HappyFace.jpg",
-      "size": 1024
+      key: "HappyFace.jpg",
+      size: 1024
     }
   ] // array of events (with parameters as properties)
 }
@@ -181,12 +181,12 @@ will be translated into:
 
 ```javascript
 {
-  "sourceType": "api",
-  "sourceEvent": originalEvent,
-  "records": [
+  sourceType: "api",
+  sourceEvent: originalEvent,
+  records: [
     {
-      "key": "HappyFace.jpg",
-      "size": 1024
+      key: "HappyFace.jpg",
+      size: 1024
     }
   ]
 }
@@ -202,9 +202,9 @@ will be translated into:
 
 ```javascript
 {
-  "sourceType": "invoke",
-  "sourceEvent": originalEvent,
-  "records": [1, 2, 3]
+  sourceType: "invoke",
+  sourceEvent: originalEvent,
+  records: [1, 2, 3]
 }
 ```
 
@@ -220,9 +220,9 @@ will be translated into:
 
 ```javascript
 {
-  "sourceType": "invoke",
-  "sourceEvent": originalEvent,
-  "records": [{ "pokemon": ["pikachu", "sudowoodo"] }]
+  sourceType: "invoke",
+  sourceEvent: originalEvent,
+  records: [{ "pokemon": ["pikachu", "sudowoodo"] }]
 }
 ```
 
