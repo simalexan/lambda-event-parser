@@ -1,11 +1,23 @@
 'use strict';
-const qs = require('querystring'),
-  queryPattern = /^\?([^=]+=[^=]+&)+[^=]+(=[^=]+)?$/g;
+const qs = require('querystring');
+const queryPattern = /^\?([^=]+=[^=]+&)+[^=]+(=[^=]+)?$/g;
+const { ApiGateway } = require('./constants/event');
 
-module.exports = function parseApiGwHttpEvent(event){
+function arrayify(value) {
+  if (Array.isArray(value)) return [...value];
+  if (value === undefined) return [];
+
+  return [value];
+}
+
+function getRecords(event) {
   let parameters = event.pathParameters || {};
   if (event && event.body) {
-    const body = event.body.match(queryPattern) ? qs.parse(event.body) : JSON.parse(event.body);
+    if (!event.body.match(queryPattern)) {
+      return arrayify(JSON.parse(event.body));
+    }
+
+    const body = qs.parse(event.body);
     parameters = Object.assign(parameters, body);
   }
 
@@ -13,9 +25,13 @@ module.exports = function parseApiGwHttpEvent(event){
     parameters = Object.assign(parameters, event.queryStringParameters);
   }
 
+  return [parameters];
+}
+
+module.exports = function parseApiGwHttpEvent(event) {
   return {
-    sourceType: 'api',
-    records: [parameters],
+    sourceType: ApiGateway,
+    records: getRecords(event),
     sourceEvent: event
   };
 };
